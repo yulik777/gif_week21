@@ -7,6 +7,9 @@ function onSearch() {
         .then(response => response.json())
         .then(gif => {
             console.log(gif);
+        if (gif.data.length == 0) {
+                        alert(`Введенная фраза не найдена`);
+                    } else {
             gif.data.forEach(element => {
                 console.log(element);
                 const box = document.createElement("img");
@@ -14,6 +17,7 @@ function onSearch() {
                 box.src = element.images.original.url;
                 pictures.append(box);
             });
+          }
         })
 
         .catch(error => console.log(error));
